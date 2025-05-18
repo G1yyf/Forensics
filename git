@@ -1,0 +1,31 @@
+Step 1: Unzip the Download
+If the challenge gives you a .zip file, just unzip it and go into the directory:
+
+unzip challenge.zip
+cd challenge/
+Step 2: Check the Git Logs
+Run:
+
+git log
+This shows a list of commits. Each one has a long hash (that's the commit ID). These commits usually contain changes made to the repo — and sometimes flags or clues.
+
+Step 3: Look Through the Commits
+Pick one of the commit hashes and check it out with:
+
+git show <commit-hash>
+This lets you see what was changed in that commit. Sometimes stuff gets deleted or added that's not in the latest version, so look closely.
+
+Step 4: Check the Branches
+Sometimes the challenge hides stuff in different branches. Run:
+
+git branch
+That’ll show the current branch you're on. To list all branches (including remote ones), you can use:
+
+git branch -a
+Step 5: Switch Branches
+If you find a branch that looks interesting, switch to it like this:
+
+git checkout <branch-name>
+You can always go back to the main branch (usually called main or master) with:
+
+git checkout main
