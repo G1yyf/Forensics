@@ -1,0 +1,16 @@
+File Carving – NCL Forensics Challenge Walkthrough
+In this challenge, I was given a file named green_file and needed to extract hidden information from it.
+Step 1: Initial Analysis
+I started by running binwalk green_file to see if it contained any embedded files or data. This helped identify file signatures and offsets. To extract anything found automatically, I used binwalk -e green_file, which created a new directory containing any carved-out files.
+
+Step 2: Identify File Types
+After extraction, I checked the file types using the file command. Running file green_file gave me the type of the main file, and then I used file on the extracted files inside the new directory to understand what they were. This helped confirm whether any were compressed archives, images, or just raw data.
+
+Step 3: Inspect Magic Bytes
+If a file came up as just "data" or didn’t have an obvious extension, I opened it in a hex editor to check the magic bytes. For example, if the hex began with 1F 8B, that meant it was likely a GZIP file. Based on the bytes, I manually renamed the file to include the correct extension, like renaming it to .gz, and then decompressed it using gunzip.
+
+Step 4: Repeat File Inspection
+After unzipping or extracting new files, I ran file again on those results. If the new files still didn’t reveal anything readable, I continued checking magic bytes, renaming, and extracting as needed.
+
+Step 5: Find the Flag
+Once I got to a readable file, like plain text or an image, I examined it for anything that looked like a flag. In some cases, I used strings to pull readable text out of a binary file and scanned it for flag-like patterns. Eventually, one of the extracted files contained the flag I was looking for.
